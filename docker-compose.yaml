@@ -1,0 +1,22 @@
+version: '2'
+services:
+  book-demo-service:
+    image:
+      book-order-service
+    ports:
+      - "8080:8080"
+
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: bookorder
+      POSTGRES_PASSWORD: bookorder
+      POSTGRES_DB: bookorderdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
